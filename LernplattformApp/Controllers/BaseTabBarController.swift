@@ -17,9 +17,9 @@ class BaseTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [
-            createNavController(viewController: PlanningViewController(), title: "Planung", imageName: "planning_icon", prefersLargeTitles: false),
-            createNavController(viewController: GradesViewController(), title: "Noten", imageName: "grades_icon", prefersLargeTitles: false),
-            createNavController(viewController: ProfileViewController(), title: "Profil", imageName: "profile_icon", prefersLargeTitles: false)
+            createNavController(viewController: PlanningViewController(), title: "Planning", imageName: "planning_icon", prefersLargeTitles: false),
+            createNavController(viewController: GradesViewController(), title: "Grades", imageName: "grades_icon", prefersLargeTitles: false),
+            createNavController(viewController: ProfileViewController(), title: "Profile", imageName: "profile_icon", prefersLargeTitles: false)
         ]
     }
     

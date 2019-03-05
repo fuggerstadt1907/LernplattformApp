@@ -20,6 +20,7 @@
 		D26897C8222E521E00ACC8D5 /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C1222E521E00ACC8D5 /* GradesViewController.swift */; };
 		D26897C9222E521E00ACC8D5 /* PlanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C3222E521E00ACC8D5 /* PlanningViewController.swift */; };
 		D26897CA222E521E00ACC8D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */; };
+		D26897D8222EAEBA00ACC8D5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897D7222EAEBA00ACC8D5 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D26897C1222E521E00ACC8D5 /* GradesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
 		D26897C3222E521E00ACC8D5 /* PlanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanningViewController.swift; sourceTree = "<group>"; };
 		D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D26897D7222EAEBA00ACC8D5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				D26897B9222E521200ACC8D5 /* Helpers */,
 				D26897B6222E521200ACC8D5 /* Models */,
+				D26897D6222EAE2800ACC8D5 /* Views */,
 				D26897BD222E521E00ACC8D5 /* Controllers */,
 				D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */,
 				D26897A3222E4FFE00ACC8D5 /* ViewController.swift */,
@@ -146,6 +149,14 @@
 				D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D26897D6222EAE2800ACC8D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D26897D7222EAEBA00ACC8D5 /* CalendarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		F07868A30A7DD181C66C37FB /* Pods */ = {
@@ -269,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26897D8222EAEBA00ACC8D5 /* CalendarView.swift in Sources */,
 				D26897C6222E521E00ACC8D5 /* BaseListController.swift in Sources */,
 				D26897BB222E521300ACC8D5 /* Apprentice.swift in Sources */,
 				D26897C8222E521E00ACC8D5 /* GradesViewController.swift in Sources */,
