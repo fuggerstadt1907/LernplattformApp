@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		478CA5F696D41C786092B5F8 /* Pods_LernplattformApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6449D52A2519CA705F5C737A /* Pods_LernplattformApp.framework */; };
 		D26897A2222E4FFE00ACC8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */; };
 		D26897A4222E4FFE00ACC8D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897A3222E4FFE00ACC8D5 /* ViewController.swift */; };
 		D26897A7222E4FFE00ACC8D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D26897A5222E4FFE00ACC8D5 /* Main.storyboard */; };
 		D26897A9222E4FFE00ACC8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D26897A8222E4FFE00ACC8D5 /* Assets.xcassets */; };
 		D26897AC222E4FFE00ACC8D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D26897AA222E4FFE00ACC8D5 /* LaunchScreen.storyboard */; };
+		D26897BB222E521300ACC8D5 /* Apprentice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897B7222E521200ACC8D5 /* Apprentice.swift */; };
+		D26897BC222E521300ACC8D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897BA222E521200ACC8D5 /* Extensions.swift */; };
+		D26897C6222E521E00ACC8D5 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897BE222E521E00ACC8D5 /* BaseListController.swift */; };
+		D26897C7222E521E00ACC8D5 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897BF222E521E00ACC8D5 /* BaseTabBarController.swift */; };
+		D26897C8222E521E00ACC8D5 /* GradesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C1222E521E00ACC8D5 /* GradesViewController.swift */; };
+		D26897C9222E521E00ACC8D5 /* PlanningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C3222E521E00ACC8D5 /* PlanningViewController.swift */; };
+		D26897CA222E521E00ACC8D5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6449D52A2519CA705F5C737A /* Pods_LernplattformApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LernplattformApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68A2EC67D6F01E426182F355 /* Pods-LernplattformApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LernplattformApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LernplattformApp/Pods-LernplattformApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9BF2B678B1F8BA2B00A9927D /* Pods-LernplattformApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LernplattformApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LernplattformApp/Pods-LernplattformApp.release.xcconfig"; sourceTree = "<group>"; };
 		D268979E222E4FFE00ACC8D5 /* LernplattformApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LernplattformApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D26897A3222E4FFE00ACC8D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +33,13 @@
 		D26897A8222E4FFE00ACC8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D26897AB222E4FFE00ACC8D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D26897AD222E4FFE00ACC8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D26897B7222E521200ACC8D5 /* Apprentice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apprentice.swift; sourceTree = "<group>"; };
+		D26897BA222E521200ACC8D5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D26897BE222E521E00ACC8D5 /* BaseListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
+		D26897BF222E521E00ACC8D5 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		D26897C1222E521E00ACC8D5 /* GradesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradesViewController.swift; sourceTree = "<group>"; };
+		D26897C3222E521E00ACC8D5 /* PlanningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanningViewController.swift; sourceTree = "<group>"; };
+		D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				478CA5F696D41C786092B5F8 /* Pods_LernplattformApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ADD3E5A9BB758434207DC88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6449D52A2519CA705F5C737A /* Pods_LernplattformApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D2689795222E4FFE00ACC8D5 = {
 			isa = PBXGroup;
 			children = (
 				D26897A0222E4FFE00ACC8D5 /* LernplattformApp */,
 				D268979F222E4FFE00ACC8D5 /* Products */,
+				F07868A30A7DD181C66C37FB /* Pods */,
+				6ADD3E5A9BB758434207DC88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +83,11 @@
 		D26897A0222E4FFE00ACC8D5 /* LernplattformApp */ = {
 			isa = PBXGroup;
 			children = (
+				D26897BD222E521E00ACC8D5 /* Controllers */,
+				D26897B9222E521200ACC8D5 /* Helpers */,
+				D26897B6222E521200ACC8D5 /* Models */,
+				D26897B8222E521200ACC8D5 /* Services */,
+				D26897B5222E521200ACC8D5 /* Views */,
 				D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */,
 				D26897A3222E4FFE00ACC8D5 /* ViewController.swift */,
 				D26897A5222E4FFE00ACC8D5 /* Main.storyboard */,
@@ -64,6 +98,81 @@
 			path = LernplattformApp;
 			sourceTree = "<group>";
 		};
+		D26897B5222E521200ACC8D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D26897B6222E521200ACC8D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D26897B7222E521200ACC8D5 /* Apprentice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D26897B8222E521200ACC8D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D26897B9222E521200ACC8D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D26897BA222E521200ACC8D5 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D26897BD222E521E00ACC8D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D26897BE222E521E00ACC8D5 /* BaseListController.swift */,
+				D26897BF222E521E00ACC8D5 /* BaseTabBarController.swift */,
+				D26897C0222E521E00ACC8D5 /* Grades */,
+				D26897C2222E521E00ACC8D5 /* Planning */,
+				D26897C4222E521E00ACC8D5 /* Profile */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D26897C0222E521E00ACC8D5 /* Grades */ = {
+			isa = PBXGroup;
+			children = (
+				D26897C1222E521E00ACC8D5 /* GradesViewController.swift */,
+			);
+			path = Grades;
+			sourceTree = "<group>";
+		};
+		D26897C2222E521E00ACC8D5 /* Planning */ = {
+			isa = PBXGroup;
+			children = (
+				D26897C3222E521E00ACC8D5 /* PlanningViewController.swift */,
+			);
+			path = Planning;
+			sourceTree = "<group>";
+		};
+		D26897C4222E521E00ACC8D5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D26897C5222E521E00ACC8D5 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F07868A30A7DD181C66C37FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68A2EC67D6F01E426182F355 /* Pods-LernplattformApp.debug.xcconfig */,
+				9BF2B678B1F8BA2B00A9927D /* Pods-LernplattformApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D26897B0222E4FFE00ACC8D5 /* Build configuration list for PBXNativeTarget "LernplattformApp" */;
 			buildPhases = (
+				20E87FB77B211C107A4649E1 /* [CP] Check Pods Manifest.lock */,
 				D268979A222E4FFE00ACC8D5 /* Sources */,
 				D268979B222E4FFE00ACC8D5 /* Frameworks */,
 				D268979C222E4FFE00ACC8D5 /* Resources */,
+				5727CEC253A70D001CB3E6EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +241,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20E87FB77B211C107A4649E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LernplattformApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5727CEC253A70D001CB3E6EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LernplattformApp/Pods-LernplattformApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CVCalendar/CVCalendar.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CVCalendar.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LernplattformApp/Pods-LernplattformApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D268979A222E4FFE00ACC8D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D26897C6222E521E00ACC8D5 /* BaseListController.swift in Sources */,
+				D26897BB222E521300ACC8D5 /* Apprentice.swift in Sources */,
+				D26897C8222E521E00ACC8D5 /* GradesViewController.swift in Sources */,
+				D26897C7222E521E00ACC8D5 /* BaseTabBarController.swift in Sources */,
 				D26897A4222E4FFE00ACC8D5 /* ViewController.swift in Sources */,
+				D26897C9222E521E00ACC8D5 /* PlanningViewController.swift in Sources */,
+				D26897CA222E521E00ACC8D5 /* ProfileViewController.swift in Sources */,
 				D26897A2222E4FFE00ACC8D5 /* AppDelegate.swift in Sources */,
+				D26897BC222E521300ACC8D5 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +437,7 @@
 		};
 		D26897B1222E4FFE00ACC8D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68A2EC67D6F01E426182F355 /* Pods-LernplattformApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +456,7 @@
 		};
 		D26897B2222E4FFE00ACC8D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BF2B678B1F8BA2B00A9927D /* Pods-LernplattformApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

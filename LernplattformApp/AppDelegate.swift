@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  LernplattformApp
 //
-//  Created by Alessandro Orlandi on 05.03.19.
+//  Created by Alessandro Orlandi on 04.03.19.
 //  Copyright © 2019 Alessandro Orlandi. All rights reserved.
 //
 
@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window?.rootViewController = BaseTabBarController()
+//        UITabBar.appearance().tintColor = .white
+//        UITabBar.appearance().backgroundColor = .black
+        
         return true
     }
 
