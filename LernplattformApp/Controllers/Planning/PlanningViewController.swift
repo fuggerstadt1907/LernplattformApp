@@ -52,38 +52,6 @@ class PlanningViewController: BaseListController {
         navigationItem.leftBarButtonItem?.tintColor = .white
     }
     
-    fileprivate func setupCVCalender() {
-        self.calendarView.calendarAppearanceDelegate = self
-        self.calendarView.animatorDelegate = self
-        self.menuView.menuViewDelegate = self
-        self.calendarView.calendarDelegate = self
-        
-        collectionView.addSubview(menuView)
-        menuView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
-        
-        collectionView.addSubview(calendarView)
-        calendarView.anchor(top: menuView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 400)
-    }
-    
-    func firstWeekday() -> Weekday {
-        return .monday
-    }
-    
-    func didShowNextMonthView(_ date: Date) {
-        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
-        changeNavigationItemTitle(to: newDate.globalDescription)
-    }
-    
-    func didShowPreviousMonthView(_ date: Date) {
-        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
-        changeNavigationItemTitle(to: newDate.globalDescription)
-    }
-    
-    fileprivate func changeNavigationItemTitle(to Title: String) {
-        navigationItem.title = Title
-    }
-    
-    
     
     
     // ---------------
@@ -104,8 +72,44 @@ class PlanningViewController: BaseListController {
 }
 
 extension PlanningViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+    
+    fileprivate func setupCVCalender() {
+        self.calendarView.calendarAppearanceDelegate = self
+        self.calendarView.animatorDelegate = self
+        self.menuView.menuViewDelegate = self
+        self.calendarView.calendarDelegate = self
+        
+        collectionView.addSubview(menuView)
+        menuView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
+        
+        collectionView.addSubview(calendarView)
+        calendarView.anchor(top: menuView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 400)
+        
+        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
+        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
+        calendarView.appearance.dayLabelPresentWeekdayTextColor = Colors.AppOrange
+    }
+    
     func presentationMode() -> CalendarMode {
         return .monthView
+    }
+    
+    func firstWeekday() -> Weekday {
+        return .monday
+    }
+    
+    func didShowNextMonthView(_ date: Date) {
+        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
+        changeNavigationItemTitle(to: newDate.globalDescription)
+    }
+    
+    func didShowPreviousMonthView(_ date: Date) {
+        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
+        changeNavigationItemTitle(to: newDate.globalDescription)
+    }
+    
+    fileprivate func changeNavigationItemTitle(to Title: String) {
+        navigationItem.title = Title
     }
     
 }

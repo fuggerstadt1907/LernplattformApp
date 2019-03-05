@@ -83,11 +83,9 @@
 		D26897A0222E4FFE00ACC8D5 /* LernplattformApp */ = {
 			isa = PBXGroup;
 			children = (
-				D26897BD222E521E00ACC8D5 /* Controllers */,
 				D26897B9222E521200ACC8D5 /* Helpers */,
 				D26897B6222E521200ACC8D5 /* Models */,
-				D26897B8222E521200ACC8D5 /* Services */,
-				D26897B5222E521200ACC8D5 /* Views */,
+				D26897BD222E521E00ACC8D5 /* Controllers */,
 				D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */,
 				D26897A3222E4FFE00ACC8D5 /* ViewController.swift */,
 				D26897A5222E4FFE00ACC8D5 /* Main.storyboard */,
@@ -98,26 +96,12 @@
 			path = LernplattformApp;
 			sourceTree = "<group>";
 		};
-		D26897B5222E521200ACC8D5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		D26897B6222E521200ACC8D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D26897B7222E521200ACC8D5 /* Apprentice.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D26897B8222E521200ACC8D5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		D26897B9222E521200ACC8D5 /* Helpers */ = {
