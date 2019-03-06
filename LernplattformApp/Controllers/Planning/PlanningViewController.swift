@@ -15,6 +15,7 @@ class PlanningViewController: BaseListController {
     // MARK: - Declarations
     // ---------------
     fileprivate let cellId = "cellId"
+    fileprivate var modules = [Module]()
     
     fileprivate var topContainerView: UIView = {
         let cv = UIView()
@@ -57,6 +58,7 @@ class PlanningViewController: BaseListController {
         setupNavigationBar()
         setupCVCalender()
         setupTableView()
+        //fetchApiData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,9 +78,25 @@ class PlanningViewController: BaseListController {
     
     
     // ---------------
-    // MARK: - TableView Functions
+    // MARK: - Fetching API Data
     // ---------------
-    
+    fileprivate func fetchApiData() {
+        Service.shared.fetchPlanning { (res, err) in
+            if let err = err {
+                print("⚠️ Failed to fetch API Data:\n", err)
+                return
+            }
+         
+            self.modules = res?.result.modules ?? []
+            print("✅ Fetched Data:\n ‣ \(self.modules)")
+            //self.modules = res?.results[0].apprenticePlanning?.modules ?? []
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     
     
@@ -158,16 +176,18 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return modules.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CalendarTableViewCell
-        cell.timeLabel.text = "13:00 \n16:00"
-        cell.subjectLabel.text = "Algorithmen und Datenstrukturen"
+        let sequence = modules[indexPath.row].sequences[indexPath.row]
+        cell.subjectLabel.text = sequence.title
+        cell.roomLabel.text = "\(sequence.trainingscenter) with \(sequence.trainer)"
+        cell.timeLabel.text = "\(sequence.startingTime)\n\(sequence.endingTime)"
         cell.tintColor = Colors.AppDarkBlue
         cell.accessoryType = .detailButton
-        cell.roomLabel.text = "München P, PC-Raum 03"
         return cell
     }
     

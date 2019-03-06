@@ -23,6 +23,7 @@
 		D26897D8222EAEBA00ACC8D5 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26897D7222EAEBA00ACC8D5 /* CalendarView.swift */; };
 		D2C631A1222FAB26001BD409 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A0222FAB26001BD409 /* CalendarTableViewCell.swift */; };
 		D2C631A4222FB350001BD409 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A3222FB350001BD409 /* Service.swift */; };
+		D2C631A6222FE9EE001BD409 /* Planning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A5222FE9EE001BD409 /* Planning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D26897D7222EAEBA00ACC8D5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		D2C631A0222FAB26001BD409 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		D2C631A3222FB350001BD409 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		D2C631A5222FE9EE001BD409 /* Planning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +99,9 @@
 				D26897A1222E4FFE00ACC8D5 /* AppDelegate.swift */,
 				D26897A3222E4FFE00ACC8D5 /* ViewController.swift */,
 				D26897A5222E4FFE00ACC8D5 /* Main.storyboard */,
-				D26897A8222E4FFE00ACC8D5 /* Assets.xcassets */,
 				D26897AA222E4FFE00ACC8D5 /* LaunchScreen.storyboard */,
 				D26897AD222E4FFE00ACC8D5 /* Info.plist */,
+				D26897A8222E4FFE00ACC8D5 /* Assets.xcassets */,
 			);
 			path = LernplattformApp;
 			sourceTree = "<group>";
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D26897B7222E521200ACC8D5 /* API Models.swift */,
+				D2C631A5222FE9EE001BD409 /* Planning.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				D26897C6222E521E00ACC8D5 /* BaseListController.swift in Sources */,
 				D26897BB222E521300ACC8D5 /* API Models.swift in Sources */,
 				D26897C8222E521E00ACC8D5 /* GradesViewController.swift in Sources */,
+				D2C631A6222FE9EE001BD409 /* Planning.swift in Sources */,
 				D26897C7222E521E00ACC8D5 /* BaseTabBarController.swift in Sources */,
 				D2C631A4222FB350001BD409 /* Service.swift in Sources */,
 				D26897A4222E4FFE00ACC8D5 /* ViewController.swift in Sources */,
