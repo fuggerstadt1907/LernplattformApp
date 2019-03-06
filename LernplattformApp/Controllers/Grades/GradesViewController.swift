@@ -21,7 +21,7 @@ class GradesViewController: BaseListController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        navigationItem.title = "Meine Noten"
+        navigationItem.title = "My Grades"
     }
     
     

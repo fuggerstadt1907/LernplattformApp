@@ -7,5 +7,6 @@ target 'LernplattformApp' do
 
   # Pods for LernplattformApp
   pod 'CVCalendar'
+  pod 'SDWebImage'
 
 end

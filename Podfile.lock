@@ -1,16 +1,22 @@
 PODS:
   - CVCalendar (1.6.1)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
   - CVCalendar
+  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CVCalendar
+    - SDWebImage
 
 SPEC CHECKSUMS:
   CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 4cf8f32133886e06b83fa3ac743218a5ddbebefa
+PODFILE CHECKSUM: 428ddcf2bec801764f356ce7dba7773a56e19c46
 
 COCOAPODS: 1.5.3

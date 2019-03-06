@@ -165,7 +165,9 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CalendarTableViewCell
         cell.timeLabel.text = "13:00 \n16:00"
         cell.subjectLabel.text = "Algorithmen und Datenstrukturen"
+        cell.tintColor = Colors.AppDarkBlue
         cell.accessoryType = .detailButton
+        cell.roomLabel.text = "München P, PC-Raum 03"
         return cell
     }
     
@@ -175,48 +177,4 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-class CalendarTableViewCell: UITableViewCell {
-    
-    //---------
-    // MARK: - Declarations
-    //---------
-    var timeLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 11, weight: .regular)
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-    
-    var subjectLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.font = .systemFont(ofSize: 15, weight: .regular)
-        lbl.adjustsFontSizeToFitWidth = true
-        lbl.lineBreakMode = .byTruncatingTail
-        lbl.textAlignment = .left
-        lbl.numberOfLines = 0
-        return lbl
-    }()
-    
-    //---------
-    // MARK: - Setting up the view
-    //---------
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .white
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    fileprivate func setupView() {
-        addSubview(timeLabel)
-        addSubview(subjectLabel)
-        
-        timeLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 50, height: 0)
-        subjectLabel.anchor(top: topAnchor, left: timeLabel.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: frame.width*0.8, height: 0)
-    }
-    
-}
+

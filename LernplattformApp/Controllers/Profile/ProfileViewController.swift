@@ -21,7 +21,7 @@ class ProfileViewController: BaseListController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-        navigationItem.title = "Mein Profil"
+        navigationItem.title = "My Profile"
     }
     
     
