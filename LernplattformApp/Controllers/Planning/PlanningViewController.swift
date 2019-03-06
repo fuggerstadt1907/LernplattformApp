@@ -55,10 +55,10 @@ class PlanningViewController: BaseListController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
     
+        fetchApiData()
         setupNavigationBar()
         setupCVCalender()
         setupTableView()
-        //fetchApiData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -91,8 +91,7 @@ class PlanningViewController: BaseListController {
             print("✅ Fetched Data:\n ‣ \(self.modules)")
             //self.modules = res?.results[0].apprenticePlanning?.modules ?? []
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            DispatchQueue.main.async {                
                 self.tableView.reloadData()
             }
         }
