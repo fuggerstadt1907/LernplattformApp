@@ -24,8 +24,7 @@ class PlanningViewController: BaseListController {
     }()
     
     fileprivate var bottomContainerView: UIView = {
-        let cv = UIView()
-        cv.backgroundColor = .green
+        let cv = UIView()        
         cv.clipsToBounds = true
         return cv
     }()
@@ -46,6 +45,7 @@ class PlanningViewController: BaseListController {
         tv.clipsToBounds = true
         return tv
     }()
+    
     
     
     // ---------------
@@ -86,12 +86,10 @@ class PlanningViewController: BaseListController {
                 print("⚠️ Failed to fetch API Data:\n", err)
                 return
             }
-         
             self.modules = res?.result.modules ?? []
             print("✅ Fetched Data:\n ‣ \(self.modules)")
-            //self.modules = res?.results[0].apprenticePlanning?.modules ?? []
             
-            DispatchQueue.main.async {                
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
@@ -106,8 +104,8 @@ class PlanningViewController: BaseListController {
         calendarView.toggleCurrentDayView()
         navigationItem.title = calendarView.presentedDate.globalDescription
     }
-    
 }
+
 
 extension PlanningViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
     
@@ -156,7 +154,6 @@ extension PlanningViewController: CVCalendarViewDelegate, CVCalendarMenuViewDele
     fileprivate func changeNavigationItemTitle(to Title: String) {
         navigationItem.title = Title
     }
-    
 }
 
 
@@ -174,6 +171,7 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.anchor(top: bottomContainerView.topAnchor, left: bottomContainerView.leftAnchor, bottom: bottomContainerView.bottomAnchor, right: bottomContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return modules.count
     }
@@ -187,6 +185,7 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = "\(sequence.startingTime)\n\(sequence.endingTime)"
         cell.tintColor = Colors.AppDarkBlue
         cell.accessoryType = .detailButton
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -194,6 +193,11 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
         return 44
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.backgroundColor = .clear
+        }
+    }
 }
 
 

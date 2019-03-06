@@ -12,10 +12,11 @@ class Service {
     
     static let shared = Service() // singleton
     
-    func fetchPlanning(completion: @escaping (PlanningResult?, Error?) -> ()){
+    func fetchPlanning(completion: @escaping (PlanningApiResult?, Error?) -> ()){
         let urlString = "https://api.myjson.com/bins/hdtoe"
         fetchGenericJSONData(urlString: urlString, completion: completion)
     }
+    
     
     // Generic JSON Functions
     // T is to declare the type later on

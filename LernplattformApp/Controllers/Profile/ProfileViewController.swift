@@ -21,7 +21,9 @@ class ProfileViewController: BaseListController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
+        
         navigationItem.title = "My Profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(LogoutBarButtonItemTapped))
     }
     
     
@@ -30,4 +32,11 @@ class ProfileViewController: BaseListController {
     // ---------------
     
     
+    
+    // ---------------
+    // MARK: - OBJC Functions
+    // ---------------
+    @objc fileprivate func LogoutBarButtonItemTapped() {
+        print("Logout handeling.....")
+    }
 }

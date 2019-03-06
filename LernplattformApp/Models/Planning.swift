@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct PlanningResult: Decodable {
-    let result: Result
+struct PlanningApiResult: Decodable {
+    let result: PlanningResult
 }
 
-struct Result: Decodable {
+struct PlanningResult: Decodable {
     let modules: [Module]
 }
 
