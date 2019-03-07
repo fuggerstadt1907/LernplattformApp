@@ -25,7 +25,6 @@ class CalendarTableViewCell: UITableViewCell {
     var subjectLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = .systemFont(ofSize: 16, weight: .regular)
-        //lbl.adjustsFontSizeToFitWidth = true
         lbl.lineBreakMode = .byTruncatingTail
         lbl.textAlignment = .left
         lbl.numberOfLines = 1

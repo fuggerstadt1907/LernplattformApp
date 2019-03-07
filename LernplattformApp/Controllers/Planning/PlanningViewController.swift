@@ -73,6 +73,8 @@ class PlanningViewController: BaseListController {
         navigationItem.title = month.globalDescription
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
         navigationItem.leftBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     
@@ -104,7 +106,13 @@ class PlanningViewController: BaseListController {
         calendarView.toggleCurrentDayView()
         navigationItem.title = calendarView.presentedDate.globalDescription
     }
+    
+    @objc fileprivate func RefreshPlanningBarButtonItemTapped() {
+        print("🔄 Refreshing planning...")
+        fetchApiData()        
+    }
 }
+
 
 
 extension PlanningViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
