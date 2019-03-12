@@ -25,6 +25,8 @@
 		D26D0AF722300EFF0002D393 /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26D0AF622300EFF0002D393 /* ProfileHeaderCell.swift */; };
 		D26D0AF922300F860002D393 /* ProfileHeaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26D0AF822300F860002D393 /* ProfileHeaderController.swift */; };
 		D26D0AFB223011A60002D393 /* ProfileDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26D0AFA223011A60002D393 /* ProfileDataCell.swift */; };
+		D2B81088223692D60074FAB5 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B81087223692D60074FAB5 /* VerticalStackView.swift */; };
+		D2B8108C2237CEE10074FAB5 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B8108B2237CEE10074FAB5 /* Protocols.swift */; };
 		D2C631A1222FAB26001BD409 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A0222FAB26001BD409 /* CalendarTableViewCell.swift */; };
 		D2C631A4222FB350001BD409 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A3222FB350001BD409 /* Service.swift */; };
 		D2C631A6222FE9EE001BD409 /* Planning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C631A5222FE9EE001BD409 /* Planning.swift */; };
@@ -54,6 +56,8 @@
 		D26D0AF622300EFF0002D393 /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
 		D26D0AF822300F860002D393 /* ProfileHeaderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderController.swift; sourceTree = "<group>"; };
 		D26D0AFA223011A60002D393 /* ProfileDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataCell.swift; sourceTree = "<group>"; };
+		D2B81087223692D60074FAB5 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		D2B8108B2237CEE10074FAB5 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D2C631A0222FAB26001BD409 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		D2C631A3222FB350001BD409 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		D2C631A5222FE9EE001BD409 /* Planning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planning.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				D26897BA222E521200ACC8D5 /* Extensions.swift */,
+				D2B81087223692D60074FAB5 /* VerticalStackView.swift */,
+				D2B8108B2237CEE10074FAB5 /* Protocols.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -342,8 +348,10 @@
 				D26D0AF3223008AB0002D393 /* ProfileHeader.swift in Sources */,
 				D26897A4222E4FFE00ACC8D5 /* ViewController.swift in Sources */,
 				D26897C9222E521E00ACC8D5 /* PlanningViewController.swift in Sources */,
+				D2B81088223692D60074FAB5 /* VerticalStackView.swift in Sources */,
 				D26897CA222E521E00ACC8D5 /* ProfileViewController.swift in Sources */,
 				D26D0AF922300F860002D393 /* ProfileHeaderController.swift in Sources */,
+				D2B8108C2237CEE10074FAB5 /* Protocols.swift in Sources */,
 				D26D0AF722300EFF0002D393 /* ProfileHeaderCell.swift in Sources */,
 				D2C631A1222FAB26001BD409 /* CalendarTableViewCell.swift in Sources */,
 				D26897A2222E4FFE00ACC8D5 /* AppDelegate.swift in Sources */,

@@ -14,8 +14,11 @@ class PlanningViewController: BaseListController {
     // ---------------
     // MARK: - Declarations
     // ---------------
+    var planningViewControllerDelegate: PlanningViewControllerDelegate?
     fileprivate let cellId = "cellId"
     fileprivate var modules = [Module]()
+    
+    fileprivate var topCalendarView = CalendarView()
     
     fileprivate var topContainerView: UIView = {
         let cv = UIView()
@@ -26,17 +29,6 @@ class PlanningViewController: BaseListController {
     fileprivate var bottomContainerView: UIView = {
         let cv = UIView()        
         cv.clipsToBounds = true
-        return cv
-    }()
-    
-    fileprivate var menuView: CVCalendarMenuView = {
-        let mv = CVCalendarMenuView()
-        mv.dayOfWeekTextUppercase = true
-        return mv
-    }()
-    
-    fileprivate var calendarView: CVCalendarView = {
-        let cv = CVCalendarView()
         return cv
     }()
     
@@ -54,27 +46,35 @@ class PlanningViewController: BaseListController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
-    
         fetchApiData()
         setupNavigationBar()
-        setupCVCalender()
+        setupCalendarView()
         setupTableView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.menuView.commitMenuViewUpdate()
-        self.calendarView.commitCalendarViewUpdate()
-        
     }
     
     fileprivate func setupNavigationBar() {
         let month = CVDate(date: Date(), calendar: Calendar(identifier: .gregorian))
         navigationItem.title = month.globalDescription
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
-        navigationItem.rightBarButtonItem?.tintColor = .white
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
+        //navigationItem.leftBarButtonItem?.tintColor = .white
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
+        //navigationItem.rightBarButtonItem?.tintColor = .white
+        
+        let leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
+        leftBarButtonItem.tintColor = .white
+        
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
+        rightBarButtonItem.tintColor = .white
+        
+        
+    }
+    
+    fileprivate func setupCalendarView() {
+        topCalendarView.calendarDelegate = self
+        collectionView.addSubview(topContainerView)
+        topContainerView.addSubview(topCalendarView.view)
+        topContainerView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
+        topCalendarView.view.fillSuperview()
     }
     
     
@@ -89,7 +89,10 @@ class PlanningViewController: BaseListController {
                 return
             }
             self.modules = res?.result.modules ?? []
-            print("✅ Fetched Data:\n ‣ \(self.modules)")
+            print("✅ Fetched Modules:")
+            for module in self.modules {
+                print("\t‣ \(module.title)")
+            }
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -103,64 +106,18 @@ class PlanningViewController: BaseListController {
     // MARK: - OBJC Functions
     // ---------------
     @objc fileprivate func TodayBarButtonItemTapped() {
-        calendarView.toggleCurrentDayView()
-        navigationItem.title = calendarView.presentedDate.globalDescription
+        planningViewControllerDelegate?.setNavigationTitleToCurrentDay()
+        
+//        planningViewControllerDelegate?.toggleToCurrentDay()
+//
+//        planningViewControllerDelegate?.setNavigationTitleToCurrentDay()
+//        calendarView.toggleCurrentDayView()
+//        navigationItem.title = calendarView.presentedDate.globalDescription
     }
     
     @objc fileprivate func RefreshPlanningBarButtonItemTapped() {
         print("🔄 Refreshing planning...")
         fetchApiData()        
-    }
-}
-
-
-
-extension PlanningViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
-    
-    fileprivate func setupCVCalender() {
-        collectionView.addSubview(topContainerView)
-        let topContainerHeight = collectionView.frame.height*0.4
-        topContainerView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: collectionView.frame.width, height: topContainerHeight)
-        
-        topContainerView.addSubview(menuView)
-        topContainerView.addSubview(calendarView)
-        
-        self.calendarView.calendarAppearanceDelegate = self
-        self.calendarView.animatorDelegate = self
-        self.menuView.menuViewDelegate = self
-        self.calendarView.calendarDelegate = self
-        
-        collectionView.addSubview(menuView)
-        menuView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
-        
-        collectionView.addSubview(calendarView)
-        calendarView.anchor(top: menuView.bottomAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: (topContainerHeight))
-        
-        calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
-        calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
-        calendarView.appearance.dayLabelPresentWeekdayTextColor = Colors.AppOrange
-    }
-    
-    func presentationMode() -> CalendarMode {
-        return .monthView
-    }
-    
-    func firstWeekday() -> Weekday {
-        return .monday
-    }
-    
-    func didShowNextMonthView(_ date: Date) {
-        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
-        changeNavigationItemTitle(to: newDate.globalDescription)
-    }
-    
-    func didShowPreviousMonthView(_ date: Date) {
-        let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
-        changeNavigationItemTitle(to: newDate.globalDescription)
-    }
-    
-    fileprivate func changeNavigationItemTitle(to Title: String) {
-        navigationItem.title = Title
     }
 }
 
@@ -197,14 +154,23 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.backgroundColor = .clear
         }
+    }
+}
+
+
+extension PlanningViewController: CustomCalendarViewDelegate {
+    func changeNavigationTitle(to Title: String) {
+        navigationItem.title = Title
     }
 }
 
