@@ -83,19 +83,20 @@ extension UILabel {
         self.font = font
     }
     
-    convenience init(firstLineString: String, secondLineString: String) {
+    convenience init(labelString: String) {
         self.init(frame: .zero)
         self.numberOfLines = 0
-        let firstLineAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 15)]
-        let secondLineAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 15)]
-        
-        let firstLineString = NSMutableAttributedString(string: firstLineString, attributes: firstLineAttributes)
-        let secondLineString = NSMutableAttributedString(string: "\n\(secondLineString)", attributes: secondLineAttributes)
-        let combinatedString = NSMutableAttributedString()
-        combinatedString.append(firstLineString)
-        combinatedString.append(secondLineString)
-        
-        self.attributedText = combinatedString
+        let stringAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray, .font: UIFont.boldSystemFont(ofSize: 15)]
+        let attributedString = NSMutableAttributedString(string: labelString, attributes: stringAttributes)
+        self.attributedText = attributedString
+    }
+    
+    convenience init(attributedString: String) {
+        self.init(frame: .zero)
+        self.numberOfLines = 0
+        let stringAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 15)]
+        let attributedString = NSMutableAttributedString(string: attributedString, attributes: stringAttributes)
+        self.attributedText = attributedString
     }
 }
 

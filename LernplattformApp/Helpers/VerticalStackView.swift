@@ -26,3 +26,19 @@ class VerticalStackView: UIStackView {
     }
     
 }
+
+class BulkVerticalStackViews: UIStackView {
+    init(arrangedStackViews: [UIStackView], spacing: CGFloat = 0) {
+        super.init(frame: .zero)
+        
+        arrangedStackViews.forEach({addArrangedSubview($0)})
+        
+        self.spacing = spacing
+        self.axis = .vertical
+        self.distribution = .fillEqually
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

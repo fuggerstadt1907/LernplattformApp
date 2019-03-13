@@ -17,10 +17,15 @@ class Service {
         fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
+    func fetchApprenticePersonalData(completion: @escaping (ApprenticeApiResult?, Error?) -> ()){
+        let urlString = "https://api.myjson.com/bins/j64hq"
+        fetchGenericJSONData(urlString: urlString, completion: completion)
+    }
+    
     
     // Generic JSON Functions
     // T is to declare the type later on
-    func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
+    fileprivate func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, resp, err) in
             if let err = err {

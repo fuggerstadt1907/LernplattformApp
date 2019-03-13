@@ -11,10 +11,11 @@ import UIKit
 class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     // ---------------
-    // MARK: - Declarations
+    // Mvar: - Declarations
     // ---------------
     fileprivate let profileHeaderCellId = "profileHeaderCellId"
     fileprivate let profileDataCellId = "profileDataCellId"
+    fileprivate var apprentice: ApprenticeResult?
     
     
     // ---------------
@@ -27,6 +28,7 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
         collectionView.register(ProfileHeaderCell.self, forCellWithReuseIdentifier: profileHeaderCellId)
         collectionView.register(ProfileDataCell.self, forCellWithReuseIdentifier: profileDataCellId)
         setupNavigationBar()
+        fetchApiData()
     }
     
     fileprivate func setupNavigationBar() {
@@ -34,6 +36,29 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
         let rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(LogoutBarButtonItemTapped))
         rightBarButtonItem.tintColor = .white
         navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    // ---------------
+    // MARK: - Fetching API Data
+    // ---------------
+    fileprivate func fetchApiData() {
+        Service.shared.fetchApprenticePersonalData { (res, err) in
+            if let err = err {
+                print("⚠️ Failed to fetch API Data:\n", err)
+                return
+            }
+            guard let result = res?.result else  {
+                print("⚠️ Error with Apprentice API Result")
+                return
+            }
+            self.apprentice = result
+            print("✅ Fetched Apprentice: ", result.name.first, result.name.last)
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
     }
     
     
@@ -65,10 +90,15 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileDataCellId, for: indexPath) as! ProfileDataCell
+            let apprenticeResult = self.apprentice
+            cell.apprenticeName.text = "\(apprenticeResult?.name.first ?? "n/a") \(apprenticeResult?.name.last ?? "n/a")"
+            cell.apprenticeJob.text = apprenticeResult?.job ?? "n/a"
+            cell.apprenticeGroup.text = apprenticeResult?.group ?? "n/a"
+            cell.apprenticeTrainingscenter.text = apprenticeResult?.trainingscenter ?? "n/a"
+            cell.apprenticeEmail.text = "contact@ao-app.dev"
             return cell
         }
     }
-    
     
     
     // ---------------

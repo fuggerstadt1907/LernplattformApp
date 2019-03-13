@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct ApprenticeApiResult {
+struct ApprenticeApiResult: Decodable {
     let result: ApprenticeResult
 }
 
-struct ApprenticeResult {
+struct ApprenticeResult: Decodable {
     let gender: String
     let name: Name
     let image: String
@@ -21,7 +21,7 @@ struct ApprenticeResult {
     let trainingscenter: String
 }
 
-struct Name {
+struct Name: Decodable {
     let first: String
     let last: String
 }
