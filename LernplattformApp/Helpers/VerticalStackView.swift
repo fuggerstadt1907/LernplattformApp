@@ -18,6 +18,7 @@ class VerticalStackView: UIStackView {
         
         self.spacing = spacing
         self.axis = .vertical
+        self.distribution = .fillEqually
     }
     
     required init(coder: NSCoder) {

@@ -82,6 +82,21 @@ extension UILabel {
         self.text = text
         self.font = font
     }
+    
+    convenience init(firstLineString: String, secondLineString: String) {
+        self.init(frame: .zero)
+        self.numberOfLines = 0
+        let firstLineAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 15)]
+        let secondLineAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 15)]
+        
+        let firstLineString = NSMutableAttributedString(string: firstLineString, attributes: firstLineAttributes)
+        let secondLineString = NSMutableAttributedString(string: "\n\(secondLineString)", attributes: secondLineAttributes)
+        let combinatedString = NSMutableAttributedString()
+        combinatedString.append(firstLineString)
+        combinatedString.append(secondLineString)
+        
+        self.attributedText = combinatedString
+    }
 }
 
 
@@ -108,5 +123,12 @@ extension UIButton {
     convenience init(title: String) {
         self.init(type: .system)
         self.setTitle(title, for: .normal)
+        self.layer.cornerRadius = 10
+        self.backgroundColor = Colors.AppOrange
+        self.setTitleColor(.white, for: .normal)
+        
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 17)]
+        self.setAttributedTitle(NSMutableAttributedString(string: title, attributes: attributes), for: .normal)
     }
+    
 }
