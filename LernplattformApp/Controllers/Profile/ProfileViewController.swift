@@ -50,7 +50,12 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: collectionView.frame.height / 2)
+        if indexPath.item == 0 {
+            return CGSize(width: view.frame.width, height: collectionView.frame.height * 0.3)
+        }
+        else {
+            return CGSize(width: view.frame.width, height: collectionView.frame.height * 0.7)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
