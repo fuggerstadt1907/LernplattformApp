@@ -15,8 +15,8 @@ class CalendarView: BaseListController {
     // ---------------
     // MARK: - Declarations
     // ---------------
-    var calendarDelegate: CustomCalendarViewDelegate?
     fileprivate let cellID = "cellId"
+    var calendarDelegate: CustomCalendarViewDelegate?
     
     fileprivate var calendarContainerView: UIView = {
         let ccv = UIView()
@@ -55,32 +55,28 @@ class CalendarView: BaseListController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         setupCalendarView()
-    
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.menuView.commitMenuViewUpdate()
         self.calendarView.commitCalendarViewUpdate()
+        
     }
 }
 
 extension CalendarView: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
-    
     fileprivate func setupCalendarView() {
         self.calendarView.calendarAppearanceDelegate = self
         self.calendarView.animatorDelegate = self
         self.menuView.menuViewDelegate = self
         self.calendarView.calendarDelegate = self
-
         collectionView.addSubview(calendarContainerView)
-        calendarContainerView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: collectionView.frame.width, height: 300)
-        
+        calendarContainerView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: collectionView.frame.width, height: 0)
         calendarContainerView.addSubview(menuView)
         calendarContainerView.addSubview(calendarView)
-        menuView.anchor(top: calendarContainerView.topAnchor, left: calendarContainerView.leftAnchor, bottom: nil, right: calendarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
+        menuView.anchor(top: calendarContainerView.topAnchor, left: calendarContainerView.leftAnchor, bottom: nil, right: calendarContainerView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 15)
         calendarView.anchor(top: menuView.bottomAnchor, left: calendarContainerView.leftAnchor, bottom: calendarContainerView.bottomAnchor, right: calendarContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 285)
-
         calendarView.appearance.dayLabelWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
         calendarView.appearance.dayLabelPresentWeekdaySelectedBackgroundColor = Colors.AppDarkBlue
         calendarView.appearance.dayLabelPresentWeekdayTextColor = Colors.AppOrange
@@ -94,6 +90,10 @@ extension CalendarView: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
         return .monday
     }
     
+    func didSelectDayView(_ dayView: DayView, animationDidFinish: Bool) {
+        print("▶️ Selected date: ", dayView.date.commonDescription)
+    }
+    
     func didShowNextMonthView(_ date: Date) {
         let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
         calendarDelegate?.changeNavigationTitle(to: newDate.globalDescription)
@@ -103,24 +103,18 @@ extension CalendarView: CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
         let newDate = CVDate(date: date, calendar: Calendar(identifier: .gregorian))
         calendarDelegate?.changeNavigationTitle(to: newDate.globalDescription)
     }
-    
-    fileprivate func changeNavigationItemTitle(to Title: String) {
-        let planningViewController = PlanningViewController()
-        planningViewController.navigationItem.title = Title
-    }
 }
 
 
 extension CalendarView: PlanningViewControllerDelegate {
     func toggleToCurrentDay() {
-        calendarView.toggleCurrentDayView()        
+        print("✅ Delegation successfull. Trying to toggle to current Day.")
+        calendarView.toggleCurrentDayView()
     }
     
     func setNavigationTitleToCurrentDay() {
-        print("test...121212121212")
         let currentDay = calendarView.presentedDate.globalDescription
         calendarDelegate?.changeNavigationTitle(to: currentDay)
     }
-    
     
 }

@@ -14,11 +14,10 @@ class PlanningViewController: BaseListController {
     // ---------------
     // MARK: - Declarations
     // ---------------
-    var planningViewControllerDelegate: PlanningViewControllerDelegate?
+    fileprivate var topCalendarView = CalendarView()
     fileprivate let cellId = "cellId"
     fileprivate var modules = [Module]()
-    
-    fileprivate var topCalendarView = CalendarView()
+    var planningDelegate: PlanningViewControllerDelegate?
     
     fileprivate var topContainerView: UIView = {
         let cv = UIView()
@@ -47,6 +46,7 @@ class PlanningViewController: BaseListController {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
         fetchApiData()
+        setupDelegates()
         setupNavigationBar()
         setupCalendarView()
         setupTableView()
@@ -55,10 +55,6 @@ class PlanningViewController: BaseListController {
     fileprivate func setupNavigationBar() {
         let month = CVDate(date: Date(), calendar: Calendar(identifier: .gregorian))
         navigationItem.title = month.globalDescription
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
-        //navigationItem.leftBarButtonItem?.tintColor = .white
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
-        //navigationItem.rightBarButtonItem?.tintColor = .white
         
         let leftBarButtonItem = UIBarButtonItem(title: "Today", style: .plain, target: self, action: #selector(TodayBarButtonItemTapped))
         leftBarButtonItem.tintColor = .white
@@ -66,11 +62,18 @@ class PlanningViewController: BaseListController {
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(RefreshPlanningBarButtonItemTapped))
         rightBarButtonItem.tintColor = .white
         
-        
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    fileprivate func setupDelegates() {
+        topCalendarView.calendarDelegate = self
+        planningDelegate = topCalendarView
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     fileprivate func setupCalendarView() {
-        topCalendarView.calendarDelegate = self
         collectionView.addSubview(topContainerView)
         topContainerView.addSubview(topCalendarView.view)
         topContainerView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 300)
@@ -106,13 +109,8 @@ class PlanningViewController: BaseListController {
     // MARK: - OBJC Functions
     // ---------------
     @objc fileprivate func TodayBarButtonItemTapped() {
-        planningViewControllerDelegate?.setNavigationTitleToCurrentDay()
-        
-//        planningViewControllerDelegate?.toggleToCurrentDay()
-//
-//        planningViewControllerDelegate?.setNavigationTitleToCurrentDay()
-//        calendarView.toggleCurrentDayView()
-//        navigationItem.title = calendarView.presentedDate.globalDescription
+        planningDelegate?.toggleToCurrentDay()
+        planningDelegate?.setNavigationTitleToCurrentDay()
     }
     
     @objc fileprivate func RefreshPlanningBarButtonItemTapped() {
@@ -125,13 +123,9 @@ class PlanningViewController: BaseListController {
 extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(CalendarTableViewCell.self, forCellReuseIdentifier: cellId)
-        
         collectionView.addSubview(bottomContainerView)
         bottomContainerView.anchor(top: topContainerView.bottomAnchor, left: collectionView.leftAnchor, bottom: collectionView.bottomAnchor, right: collectionView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
         bottomContainerView.addSubview(tableView)
         tableView.anchor(top: bottomContainerView.topAnchor, left: bottomContainerView.leftAnchor, bottom: bottomContainerView.bottomAnchor, right: bottomContainerView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
@@ -168,7 +162,7 @@ extension PlanningViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension PlanningViewController: CustomCalendarViewDelegate {
+extension PlanningViewController: CustomCalendarViewDelegate {    
     func changeNavigationTitle(to Title: String) {
         navigationItem.title = Title
     }
