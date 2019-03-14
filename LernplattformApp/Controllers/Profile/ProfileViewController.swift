@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLayout {
     
@@ -52,13 +53,12 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
                 return
             }
             self.apprentice = result
-            print("✅ Fetched Apprentice: ", result.name.first, result.name.last)
+            print("✅ Fetched Apprentice:\n \t‣ ", result.name.first, result.name.last)
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
-        
     }
     
     
@@ -86,15 +86,17 @@ class ProfileViewController: BaseListController, UICollectionViewDelegateFlowLay
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileHeaderCellId, for: indexPath) as! ProfileHeaderCell
+            let apprenticeResult = self.apprentice
+            cell.apprenticeImageView.sd_setImage(with: URL(string: apprenticeResult?.image ?? ""))
             return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: profileDataCellId, for: indexPath) as! ProfileDataCell
             let apprenticeResult = self.apprentice
-            cell.apprenticeName.text = "\(apprenticeResult?.name.first ?? "n/a") \(apprenticeResult?.name.last ?? "n/a")"
-            cell.apprenticeJob.text = apprenticeResult?.job ?? "n/a"
-            cell.apprenticeGroup.text = apprenticeResult?.group ?? "n/a"
-            cell.apprenticeTrainingscenter.text = apprenticeResult?.trainingscenter ?? "n/a"
+            cell.apprenticeName.text = "\(apprenticeResult?.name.first ?? "") \(apprenticeResult?.name.last ?? "")"
+            cell.apprenticeJob.text = apprenticeResult?.job ?? ""
+            cell.apprenticeGroup.text = apprenticeResult?.group ?? ""
+            cell.apprenticeTrainingscenter.text = apprenticeResult?.trainingscenter ?? ""
             cell.apprenticeEmail.text = "contact@ao-app.dev"
             return cell
         }

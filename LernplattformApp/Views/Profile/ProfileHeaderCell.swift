@@ -13,7 +13,6 @@ class ProfileHeaderCell: UICollectionViewCell {
     // ---------------
     // MARK: - Declarations
     // ---------------
-    //var greenView: UIView!
     var greenView: UIView = {
         let v = UIView()
         return v
@@ -23,6 +22,7 @@ class ProfileHeaderCell: UICollectionViewCell {
     
     var apprenticeImageView: UIImageView = {
         let iv = UIImageView()
+        iv.image = #imageLiteral(resourceName: "img_placeholder").withRenderingMode(.alwaysOriginal)
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.layer.borderColor = UIColor.white.cgColor
@@ -42,20 +42,22 @@ class ProfileHeaderCell: UICollectionViewCell {
     // ---------------
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupGradientLayer()
+        backgroundColor = Colors.AppDarkBlue
+        setupHeader()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func setupGradientLayer() {
-        greenView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
-        addSubview(greenView)
-        
-        gradientLayer = CAGradientLayer()
-        gradientLayer.frame = greenView.bounds
-        gradientLayer.colors = [Colors.AppDarkBlue.cgColor, Colors.AppLightBlue.cgColor]
-        greenView.layer.addSublayer(gradientLayer)
+    fileprivate func setupHeader() {
+        addSubview(apprenticeImageView)
+        let width = frame.width / 2.5
+        let imageCornerRadius = width/2
+        apprenticeImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: width, height: width)
+        apprenticeImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        apprenticeImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        apprenticeImageView.layer.cornerRadius = imageCornerRadius
+
     }
 }

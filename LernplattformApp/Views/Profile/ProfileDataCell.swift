@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ProfileDataCell: UICollectionViewCell {
    
@@ -54,10 +55,29 @@ class ProfileDataCell: UICollectionViewCell {
         addSubview(buttonStackView)
         buttonStackView.anchor(top: overallStackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 35, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, width: 0, height: 0)
         
+        ebisButton.addTarget(self, action: #selector(ebisButtonTapped), for: .touchUpInside)
+        owaButton.addTarget(self, action: #selector(owaButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
+    fileprivate func openSafariVC(for url: String) {
+        guard let url = URL(string: url) else {
+            print("⚠️ URL Error. Safari Link could not be opend!")
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        self.window?.rootViewController?.present(safariVC, animated: true)
+    }
+    
+    @objc fileprivate func ebisButtonTapped() {
+        openSafariVC(for: "https://education-siemens.com")
+    }
+    
+    @objc fileprivate func owaButtonTapped() {
+        openSafariVC(for: "https://owa.education-siemens.com/owa")
+    }
+    
 }
