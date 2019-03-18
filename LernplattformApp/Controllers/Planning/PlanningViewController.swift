@@ -19,6 +19,11 @@ class PlanningViewController: BaseListController {
     fileprivate var modules = [Module]()
     var planningDelegate: PlanningViewControllerDelegate?
     
+    fileprivate let activityIndicator: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+        return ai
+    }()
+    
     fileprivate var topContainerView: UIView = {
         let cv = UIView()
         cv.clipsToBounds = true
@@ -114,9 +119,18 @@ class PlanningViewController: BaseListController {
     }
     
     @objc fileprivate func RefreshPlanningBarButtonItemTapped() {
+        collectionView.addSubview(activityIndicator)
+        activityIndicator.center = collectionView.center
+        activityIndicator.backgroundColor = UIColor.init(white: 0.7, alpha: 1)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
         print("🔄 Refreshing planning...")
-        fetchApiData()        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.fetchApiData()
+            self.activityIndicator.stopAnimating()
+        }
     }
+    
 }
 
 

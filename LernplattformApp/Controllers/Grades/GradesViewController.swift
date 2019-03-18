@@ -13,24 +13,15 @@ class GradesViewController: BaseListController {
     // ---------------
     // MARK: - Declarations
     // ---------------
-    let gradesConfirmInfoIcon: UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal)
-        iv.contentMode = .scaleAspectFit
-        iv.heightAnchor.constraint(equalToConstant: 24)
-        iv.widthAnchor.constraint(equalToConstant: 24)
-        iv.clipsToBounds = true
-        return iv
-    }()
-    
     var gradesToBeConfirmedCount: Int = 0
     
     let gradesConfirmInfoText: UILabel = {
         let l = UILabel()
-        l.text = "Grades to be confirmed: 0"
+        l.text = "Grades to be confirmed:"
         l.font = .boldSystemFont(ofSize: 18)
         l.numberOfLines = 0
         l.adjustsFontSizeToFitWidth = true
+        l.textAlignment = .center
         return l
     }()
     
@@ -45,14 +36,9 @@ class GradesViewController: BaseListController {
     }
     
     fileprivate func setupConfirmGradesUI() {
-        let gradesConfirmStackView = UIStackView(arrangedSubviews: [gradesConfirmInfoIcon, gradesConfirmInfoText])
-        gradesConfirmStackView.axis = .horizontal
-        gradesConfirmStackView.spacing = 10
-        gradesConfirmStackView.distribution = .fillProportionally
-        gradesConfirmStackView.alignment = .center
-        collectionView.addSubview(gradesConfirmStackView)
-        gradesConfirmStackView.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 30, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
-        
+        collectionView.addSubview(gradesConfirmInfoText)
+        gradesConfirmInfoText.anchor(top: collectionView.topAnchor, left: collectionView.leftAnchor, bottom: nil, right: collectionView.rightAnchor, paddingTop: 30, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30)
+        gradesConfirmInfoText.text = "\(gradesConfirmInfoText.text!) \(gradesToBeConfirmedCount)"
     }
     
     
