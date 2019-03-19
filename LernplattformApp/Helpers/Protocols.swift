@@ -18,3 +18,7 @@ protocol PlanningViewControllerDelegate {
     func toggleToCurrentDay()
     func setNavigationTitleToCurrentDay()
 }
+
+protocol GradesCustomHeaderCellDelegate {
+    func toggleModule(button: UIButton)
+}

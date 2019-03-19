@@ -54,7 +54,7 @@ class ProfileHeaderCell: UICollectionViewCell {
         addSubview(apprenticeImageView)
         let width = frame.width / 2.5
         let imageCornerRadius = width/2
-        apprenticeImageView.anchor(top: nil, left: leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: width, height: width)
+        apprenticeImageView.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: width, height: width)
         apprenticeImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         apprenticeImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         apprenticeImageView.layer.cornerRadius = imageCornerRadius

@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 
 class ProfileDataCell: UICollectionViewCell {
-   
+    
     // ---------------
     // MARK: - Declarations
     // ---------------

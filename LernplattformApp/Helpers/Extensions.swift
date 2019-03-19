@@ -77,11 +77,6 @@ extension UIView {
 
 
 extension UILabel {
-    convenience init(text: String, font: UIFont) {
-        self.init(frame: .zero)
-        self.text = text
-        self.font = font
-    }
     
     convenience init(labelString: String) {
         self.init(frame: .zero)
